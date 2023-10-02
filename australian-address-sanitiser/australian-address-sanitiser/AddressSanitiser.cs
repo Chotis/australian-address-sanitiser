@@ -71,37 +71,38 @@ namespace australian_address_sanitiser
 
         private string ReturnState(string addressInput, bool abbreviateState)
         {
-            // Regular expression pattern to match state names or abbreviations
-            string pattern = @"\b(" + string.Join("|", Constants.Constants.StateCodesAbbreviations.Keys.Select(k => k.ToLower())) + "|" +
-                             string.Join("|", Constants.Constants.StateCodesAbbreviations.Values.Select(v => v.ToLower())) + @")\b";
+            var lowercaseDictionary = Constants.Constants.StateCodesAbbreviations.ToDictionary(entry => entry.Key.ToLower(), entry => entry.Value.ToLower());
 
-            // Replace state names or abbreviations in the address string
-            string sanitizedStateAddress = Regex.Replace(addressInput, pattern, match =>
+            string[] words = addressInput.Split(' ');
+
+            // Iterate over the words and check if any word is a key in the dictionary
+            foreach (var kvp in lowercaseDictionary)
             {
-                string value = match.Value;
-
-                if (abbreviateState)
+                // Check if any word in the input address matches a key or value in the dictionary
+                for (int i = 0; i < words.Length; i++)
                 {
-                    // If the matched value is a state name, replace it with its abbreviation
-                    if (Constants.Constants.StateCodesAbbreviations.ContainsKey(value))
+                    if (abbreviateState)
                     {
-                        return Constants.Constants.StateCodesAbbreviations[value];
+                        if (words[i] == kvp.Key)
+                        {
+                            words[i] = kvp.Value;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (words[i] == kvp.Value)
+                        {
+                            words[i] = kvp.Key;
+                            break;
+                        }
                     }
                 }
-                else
-                {
-                    // If the matched value is a state abbreviation, replace it with its full name
-                    if (Constants.Constants.StateCodesAbbreviations.ContainsValue(value))
-                    {
-                        return Constants.Constants.StateCodesAbbreviations.FirstOrDefault(x => x.Value == value).Key;
-                    }
-                }
-                
-                // If no match is found, return the original value
-                return value;
-            });
+            }
 
-            return sanitizedStateAddress;
+            // Join the words back into a string
+            string modifiedAddressState = string.Join(" ", words);
+            return modifiedAddressState;
         }
 
         private string ReturnAddressSuffix(string addressInput, bool abbreviateAddressSuffix)
@@ -124,8 +125,7 @@ namespace australian_address_sanitiser
                             break;
                         }
                     }
-                    else
-                    {
+                    else{
                         if (words[i] == kvp.Value)
                         {
                             words[i] = kvp.Key;
@@ -134,6 +134,10 @@ namespace australian_address_sanitiser
                     }
                 }
             }
+
+            // Join the words back into a string
+            string modifiedAddressSuffix = string.Join(" ", words);
+            return modifiedAddressSuffix;
 
         }
     }
