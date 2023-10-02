@@ -25,6 +25,7 @@ jobs:
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: true
         DOTNET_NOLOGO: true
+      working-directory: ./australian-address-sanitiser/australian-address-sanitiser
 
     - name: Pack and publish NuGet package
       run: |
