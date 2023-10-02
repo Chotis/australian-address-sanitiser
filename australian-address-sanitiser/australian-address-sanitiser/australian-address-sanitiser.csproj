@@ -5,6 +5,14 @@
     <RootNamespace>australian_address_sanitiser</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<PackageId>australian-address-sanitiser</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Panayiotis Moutzouris</Authors>
+	<Description>A sanitiser for Australian Addresses</Description>
+	<PackageTags>australia address-sanitizer address-sanitiser</PackageTags>
+	<PackageProjectUrl>https://github.com/Chotis/australian-address-sanitiser</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/Chotis/australian-address-sanitiser</RepositoryUrl>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
