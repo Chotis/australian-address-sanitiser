@@ -2,9 +2,9 @@
 
 namespace australian_address_sanitiser
 {
-    public class AddressSanitiser
+    public static class AddressSanitiser
     {
-        public string SanitizeAddress(string address, bool abbreviateState = true, bool abbreviateAddressSuffix = true, bool capitalise = false)
+        public static string SanitizeAddress(string address, bool abbreviateState = true, bool abbreviateAddressSuffix = true, bool capitalise = false)
         {
             string sanitisedAddress = "";
 
@@ -33,7 +33,7 @@ namespace australian_address_sanitiser
         }
 
         // Replace all commas with an empty string
-        private string RemoveCommas(string addressInput)
+        private static string RemoveCommas(string addressInput)
         {
             
             string removedCommas = addressInput.Replace(",", "");
@@ -42,34 +42,34 @@ namespace australian_address_sanitiser
         }
 
         // Replace all full stops with an empty string
-        private string RemoveFullStops(string addressInput)
+        private static string RemoveFullStops(string addressInput)
         {
             string removedFullStops = addressInput.Replace(".", "");
 
             return removedFullStops;
         }
 
-        private string RemoveHyphens(string addressInput)
+        private static string RemoveHyphens(string addressInput)
         {
             // Remove hyphens from the input string
             return addressInput.Replace("-", " ");
         }
 
-        private string RemoveForwardSlashes(string addressInput)
+        private static string RemoveForwardSlashes(string addressInput)
         {
             // Remove hyphens from the input string
             return addressInput.Replace("/", " ");
         }
 
         // Remove additional spaces
-        private string RemoveExtraSpaces(string addressInput)
+        private static string RemoveExtraSpaces(string addressInput)
         {
             string removedExtraSpaces = Regex.Replace(addressInput, @"\s+", " ").Trim();
 
             return removedExtraSpaces;
         }
 
-        private string ReturnState(string addressInput, bool abbreviateState)
+        private static string ReturnState(string addressInput, bool abbreviateState)
         {
             var lowercaseDictionary = Constants.Constants.StateCodesAbbreviations.ToDictionary(entry => entry.Key.ToLower(), entry => entry.Value.ToLower());
 
@@ -105,7 +105,7 @@ namespace australian_address_sanitiser
             return modifiedAddressState;
         }
 
-        private string ReturnAddressSuffix(string addressInput, bool abbreviateAddressSuffix)
+        private static string ReturnAddressSuffix(string addressInput, bool abbreviateAddressSuffix)
         {
             var lowercaseDictionary = Constants.Constants.AddressSuffixAbbreviations.ToDictionary(entry => entry.Key.ToLower(), entry => entry.Value.ToLower());
 

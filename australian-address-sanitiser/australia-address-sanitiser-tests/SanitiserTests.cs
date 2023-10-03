@@ -1,13 +1,10 @@
 using australian_address_sanitiser;
-using System.IO;
-using System.Runtime.ConstrainedExecution;
 
 namespace australia_address_sanitiser_tests
 {
     public class SanitiserTests
     {
-        private readonly AddressSanitiser _sut = new AddressSanitiser();
-
+       
         [Theory]
         [InlineData("123 Test Highway, Ferntree Gully, VIC 3156", "123 Test Hwy, Ferntree Gully, VIC 3156")]
         [InlineData("123 Test Rd, Coopers Plains, QLD 4108", "123 test Road, Coopers Plains, QLD 4108")]
@@ -25,8 +22,8 @@ namespace australia_address_sanitiser_tests
         public void SanitiseAddress_SimilarAddress_Match(string address, string similarAddress)
         {
             //Act
-            var firstAddress = _sut.SanitizeAddress(address);
-            var secondAddress = _sut.SanitizeAddress(similarAddress);
+            var firstAddress = AddressSanitiser.SanitizeAddress(address);
+            var secondAddress = AddressSanitiser.SanitizeAddress(similarAddress);
 
             //Assert
             Assert.Equal(firstAddress, secondAddress);
@@ -49,8 +46,8 @@ namespace australia_address_sanitiser_tests
         public void SanitiseAddress_SimilarAddressAdditionalParameters_Match(string address, string similarAddress)
         {
             //Act
-            var firstAddress = _sut.SanitizeAddress(address, false, false, true);
-            var secondAddress = _sut.SanitizeAddress(similarAddress, false, false, true);
+            var firstAddress = AddressSanitiser.SanitizeAddress(address, false, false, true);
+            var secondAddress = AddressSanitiser.SanitizeAddress(similarAddress, false, false, true);
 
             //Assert
             Assert.Equal(firstAddress, secondAddress);
