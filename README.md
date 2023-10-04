@@ -6,7 +6,7 @@ The Australian Address Sanitiser is a utility class designed to sanitise Austral
 
 ### Installation
 
-No installation is necessary. Simply include the nuget package https://www.nuget.org/packages/australian-address-sanitiser in your C# project.
+No installation is necessary. Simply include the nuget package https://www.nuget.org/packages/AustralianAddressSanitiser/ in your C# project.
 
 ### Example Usage
 
