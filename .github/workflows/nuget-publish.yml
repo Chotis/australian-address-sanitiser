@@ -20,15 +20,15 @@ jobs:
 
     - name: Build and run tests
       run: |
-        dotnet build -c Release australian-address-sanitiser/australian-address-sanitiser/australian-address-sanitiser.csproj
-        dotnet test australian-address-sanitiser/australia-address-sanitiser-tests/australia-address-sanitiser-tests.csproj
+        dotnet build -c Release AustralianAddressSanitiser/AustralianAddressSanitiser/AustralianAddressSanitiser.csproj
+        dotnet test AustralianAddressSanitiser/AustralianAddressSanitiser.Tests/AustralianAddressSanitiser.Tests.csproj
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: true
         DOTNET_NOLOGO: true
 
     - name: Pack and publish NuGet package
       run: |
-        dotnet pack -c Release -o ./output australian-address-sanitiser/australian-address-sanitiser/australian-address-sanitiser.csproj
+        dotnet pack -c Release -o ./output AustralianAddressSanitiser/AustralianAddressSanitiser/AustralianAddressSanitiser.csproj
         dotnet nuget push ./output/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: true

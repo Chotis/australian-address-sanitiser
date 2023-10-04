@@ -1,6 +1,6 @@
-using australian_address_sanitiser;
+using AustralianAddressSanitiser;
 
-namespace australia_address_sanitiser_tests
+namespace AustralianAddressSanitiser.Tests
 {
     public class SanitiserTests
     {

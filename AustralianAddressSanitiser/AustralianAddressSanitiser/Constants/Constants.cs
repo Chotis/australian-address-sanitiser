@@ -1,4 +1,4 @@
-﻿namespace australian_address_sanitiser.Constants
+﻿namespace AustralianAddressSanitiser.Constants
 {
     public static class Constants
     {

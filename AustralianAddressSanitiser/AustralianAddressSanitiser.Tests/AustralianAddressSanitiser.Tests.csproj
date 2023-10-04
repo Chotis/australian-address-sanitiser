@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>australia_address_sanitiser_tests</RootNamespace>
+    <RootNamespace>AustralianAddressSanitiser.Tests</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\australian-address-sanitiser\australian-address-sanitiser.csproj" />
+    <ProjectReference Include="..\AustralianAddressSanitiser\AustralianAddressSanitiser.csproj" />
   </ItemGroup>
 
 </Project>

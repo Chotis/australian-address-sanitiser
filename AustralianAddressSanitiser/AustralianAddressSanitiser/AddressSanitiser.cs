@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace australian_address_sanitiser
+namespace AustralianAddressSanitiser
 {
     public static class AddressSanitiser
     {
